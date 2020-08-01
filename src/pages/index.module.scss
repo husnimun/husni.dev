@@ -1,18 +1,28 @@
 .BlogPost {
     display: grid;
-    grid-template-columns: 140px 1fr;
     margin-bottom: 24px;
+
+    @media screen and (min-width: 720px) {
+        grid-template-columns: 140px 1fr;
+    }
 }
 
 .BlogPostTitle {
-    font-size: 1.4rem;
-    align-self: center;
     margin-bottom: 0;
 }
 
 .BlogPostDate {
     color: #888;
-    font-size: 1.4rem;
-    align-self: center;
     font-weight: 400;
+}
+
+
+.BlogPostTitle,
+.BlogPostDate {
+    align-self: center;
+    font-size: 1rem;
+    
+    @media screen and (min-width: 720px) {
+        font-size: 1.4rem;
+    }
 }

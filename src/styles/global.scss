@@ -10,10 +10,14 @@ html {
     color: $soft-black;
 }
 
-
 body {
-    font-size: 1.25rem;
+    font-size: 1rem;
+
+    @media screen and (min-width: 720px) {
+        font-size: 1.25rem;
+    }
 }
+
 
 // Link
 a,
