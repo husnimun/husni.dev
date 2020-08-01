@@ -1,0 +1,18 @@
+.BlogPost {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    margin-bottom: 24px;
+}
+
+.BlogPostTitle {
+    font-size: 1.4rem;
+    align-self: center;
+    margin-bottom: 0;
+}
+
+.BlogPostDate {
+    color: #888;
+    font-size: 1.4rem;
+    align-self: center;
+    font-weight: 400;
+}

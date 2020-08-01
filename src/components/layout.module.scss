@@ -1,0 +1,19 @@
+@import "../styles/color.scss";
+
+.Container {
+    margin-top: 32px;
+    max-width: 900px;
+    padding-right: 32px;
+    padding-left: 32px;
+}
+
+.Header {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 32px;
+}
+
+.Header a {
+    color: $soft-black;
+    text-decoration: none;;
+}
