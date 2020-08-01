@@ -1,7 +1,7 @@
 ---
 title: Amdahl's Law
 date: "2020-08-01"
-description: "Amdah's law"
+description: "Amdahl's law"
 ---
 
 Let's say that you want to speed up 75% of your system's execution time by three times.
