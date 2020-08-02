@@ -1,6 +1,6 @@
 .BlogPost {
     display: grid;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
 
     @media screen and (min-width: 720px) {
         grid-template-columns: 140px 1fr;
@@ -9,6 +9,10 @@
 
 .BlogPostTitle {
     margin-bottom: 0;
+
+    a {
+        border-bottom: none;
+    }
 }
 
 .BlogPostDate {

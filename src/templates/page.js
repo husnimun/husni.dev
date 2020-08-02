@@ -1,4 +1,5 @@
-import React, { useEffect } from "react"
+
+import React from "react"
 import { graphql } from "gatsby"
 
 import "katex/dist/katex.min.css"
@@ -11,20 +12,6 @@ const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata.title
 
-  useEffect(() => {
-    const script = document.createElement("script")
-    const comments = document.getElementById("comments")
-    script.src = "https://utteranc.es/client.js"
-    script.async = true
-    script.setAttribute("repo", "husnimun/husni.dev.comments")
-    script.setAttribute("issue-term", "pathname")
-    script.setAttribute("repo", "husnimun/husni.dev.comments")
-    script.setAttribute("label", "comment")
-    script.setAttribute("theme", "github-light")
-    script.setAttribute("crossorigin", "anonymous")
-    comments.appendChild(script)
-  }, [])
-
   return (
     <Layout location={location} title={siteTitle}>
       <SEO
@@ -34,13 +21,11 @@ const BlogPostTemplate = ({ data, location }) => {
       <article>
         <header className={styles.Header}>
           <h1 className={styles.HeaderTitle}>{post.frontmatter.title}</h1>
-          <p className={styles.HeaderDate}>{post.frontmatter.date}</p>
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
         <footer></footer>
       </article>
       <hr className={styles.Separator}></hr>
-      <div id="comments" className={styles.Comments}></div>
     </Layout>
   )
 }
@@ -48,7 +33,7 @@ const BlogPostTemplate = ({ data, location }) => {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
+  query PageBySlug($slug: String!) {
     site {
       siteMetadata {
         title

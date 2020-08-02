@@ -1,11 +1,15 @@
 @import "../styles/color";
 
 .Header {
-    margin-bottom: 32px;
+    margin-bottom: 24px;
 }
 
 .HeaderTitle {
     margin-bottom: 0;
+
+    a {
+        border-bottom: none;
+    }
 }
 
 .HeaderDate {
@@ -18,9 +22,9 @@
     border: none;
     border-bottom: 1px solid $light-grey;
     margin-top: 52px;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
 }
 
 .Comments {
-    margin-bottom: 32px;
+    margin-bottom: 24px;
 }

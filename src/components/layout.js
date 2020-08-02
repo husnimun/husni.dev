@@ -2,7 +2,7 @@ import React from "react"
 import styles from "./layout.module.scss"
 import { Link } from "gatsby"
 
-const Layout = ({ location, title, children }) => {  
+const Layout = ({ location, title, children }) => {
   return (
     <div
       className={styles.Container}
@@ -14,7 +14,10 @@ const Layout = ({ location, title, children }) => {
       <header className={styles.Header}>
         <Link to="/">Husni Munaya</Link>
       </header>
-      <main>{children}</main>
+      <main className={styles.Main}>{children}</main>
+      <footer className={styles.Footer}>
+        © {new Date().getFullYear()} Husni Munaya. <Link to="/rss.xml">Subscribe (RSS)</Link>.
+      </footer>
     </div>
   )
 }
