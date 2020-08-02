@@ -9,8 +9,6 @@ const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
 
-  console.log(format(new Date(posts[0].node.frontmatter.date), "yyyy-MM-dd"))
-
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
