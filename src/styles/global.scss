@@ -1,6 +1,15 @@
 @import "normalize";
 @import "color";
-// @import "prism-dracula";
+@import "comment";
+
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
 
 html {
     background-color: $soft-white;
@@ -9,6 +18,8 @@ html {
     line-height: 1.5;
     color: $soft-black;
 }
+
+
 
 body {
     font-size: 1rem;
