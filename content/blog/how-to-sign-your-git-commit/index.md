@@ -7,12 +7,12 @@ description: "How to sign your git commit"
 Today I learned that you can sign your git commit with GPG.
 Before you can sign your commit, you need to have a GPG keypair configured on your machine.
 
-To generate a GPG key pair, run the following command.
+To generate a GPG keypair, run the following command.
 ```bash
 gpg --full-generate-key
 ```
 
-Once you have a private key, you can now sign your commit. When committing changes in your local branch, add `-S` flag to sign your commit.
+Once you have a private key, you can sign your commit with `-S` flag.
 ```bash
 $ git commit -S -m "your commit message"
 ```

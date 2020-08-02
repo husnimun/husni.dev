@@ -4,6 +4,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import styles from "./blog-post.module.scss"
+import "katex/dist/katex.min.css"
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
