@@ -20,7 +20,7 @@ const BlogPostTemplate = ({ data, location }) => {
     script.setAttribute("issue-term", "pathname")
     script.setAttribute("repo", "husnimun/husni.dev.comments")
     script.setAttribute("label", "comment")
-    script.setAttribute("theme", "github-light")
+    script.setAttribute("theme", "github-dark")
     script.setAttribute("crossorigin", "anonymous")
     comments.appendChild(script)
   }, [])

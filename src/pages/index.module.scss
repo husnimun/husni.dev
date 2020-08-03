@@ -1,3 +1,5 @@
+@import "../styles/color";
+
 .BlogPost {
     display: grid;
     margin-bottom: 16px;
@@ -16,7 +18,7 @@
 }
 
 .BlogPostDate {
-    color: #888;
+    color: $light-grey;
     font-weight: 400;
 }
 
