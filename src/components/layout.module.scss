@@ -2,7 +2,7 @@
 
 .Container {
     position: relative;
-    max-width: 900px;
+    max-width: 800px;
     min-height: 100vh;
     padding-top: 32px;
     padding-right: 24px;
@@ -22,7 +22,7 @@
 }
 
 .Header a {
-    color: $soft-white;
+    color: $white;
     text-decoration: none;
     border-bottom: none;
 }
