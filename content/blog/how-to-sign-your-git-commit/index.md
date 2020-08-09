@@ -12,9 +12,9 @@ To generate a GPG keypair, run the following command.
 gpg --full-generate-key
 ```
 
-Once you have a private key, you can sign your commit with `-S` flag.
+Once you have a GPG keypair, you can sign your commit with `-S` flag.
 ```bash
-$ git commit -S -m "your commit message"
+git commit -S -m "your commit message"
 ```
 
 You can sign all commits by default in any local repository by running the following command.
