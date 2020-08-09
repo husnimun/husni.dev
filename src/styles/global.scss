@@ -13,7 +13,7 @@ html {
 
 
 html {
-    background-color: $dark-blue;
+    background-color: $background;
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     line-height: 1.5;
@@ -81,10 +81,17 @@ h2 {
 }
 
 // List 
-ul {
+ul, ol {
     margin-top: 0;
     margin-bottom: 32px;
 }
+
+p ~ ul,
+p ~ ol {
+    margin-top: -12px;
+}
+
+
 
 li {
     margin-bottom: 0.5rem;
@@ -99,14 +106,37 @@ p + ul {
 pre,
 code {
     font-family: 'Fira Code', monospace;
+    background-color: #282A36;
 }
 
-p ~ .gatsby-highlight {
-    margin-top: -12px;
+code {
+    padding-left: 4px;
+    padding-right: 4px;
 }
 
-pre[class*="language-"] {
-    font-size: 0.875rem;
+pre > code {
+    padding: 0;
+}
+
+p ~ pre {
+    margin-top: -14px;
+}
+
+pre {
+    font-size: 0.75rem;
+    padding: 16px;
     margin-top: 0;
     margin-bottom: 24px;
+}
+
+pre {
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+    tab-size: 4;
+    hyphens: none;
+    overflow: auto;
 }

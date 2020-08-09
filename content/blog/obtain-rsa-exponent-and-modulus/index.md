@@ -4,7 +4,7 @@ date: "2020-08-09"
 description: Obtain Exponent and Modulus from RSA key in PEM format with Python
 ---
 
-If you understand the math behind RSA algorithm, you should know that RSA consists of several components: $n$, $e$, and $d$ such that
+If you understand the math behind RSA algorithm, you should know that RSA consists of several components: $e$, $d$, and $n$ such that
 
 $$
 m^{ed} \equiv m\,  (mod\,  n)

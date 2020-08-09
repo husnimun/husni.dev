@@ -62,7 +62,12 @@ module.exports = {
               rel: "nofollow"
             }
           },
-          `gatsby-remark-prismjs`,
+          {
+            resolve: `gatsby-remark-shiki`,
+            options: {
+              theme: `${__dirname}/theme-dracula.json`,
+            },
+          },
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
         ],
