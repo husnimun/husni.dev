@@ -1,5 +1,5 @@
 ---
-title: "Beware of implicit memory aliasing in Go for loop"
+title: "Beware of Implicit Memory Aliasing in Go For Loop"
 date: "2020-12-19"
 description: "Beware of implicit memory aliasing in Go for loop"
 ---
