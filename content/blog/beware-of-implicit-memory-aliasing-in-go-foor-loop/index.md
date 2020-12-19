@@ -4,7 +4,7 @@ date: "2020-12-19"
 description: "Beware of implicit memory aliasing in Go for loop"
 ---
 
-A foor loop in Go will only use one iterator variable whose value gets updated in each loop operation.
+A for loop in Go will only use one iterator variable whose value gets updated in each loop operation.
 Since it's just a single variable, its address is constant and doesn't change.
 
 Consider the following example.
@@ -27,7 +27,7 @@ func main() {
 
 ```
 
-It will produces the following output:
+It will produce the following output:
 ```
 Value:  3 3 3
 Address:  0xc00010c000 0xc00010c000 0xc00010c000
