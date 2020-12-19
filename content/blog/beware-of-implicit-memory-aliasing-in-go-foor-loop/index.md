@@ -1,0 +1,70 @@
+---
+title: "Beware of implicit memory aliasing in Go for loop"
+date: "2020-12-19"
+description: "Beware of implicit memory aliasing in Go for loop"
+---
+
+A foor loop in Go will only use one iterator variable whose value gets updated in each loop operation.
+Since it's just a single variable, its address is constant and doesn't change.
+
+Consider the following example.
+```go
+package main
+
+import "fmt"
+
+func main() {
+    var output []*int
+    nums := []int{1, 2, 3}
+
+    for _, num := range nums {
+        output = append(output, &num)
+    }
+
+    fmt.Println("Value: ", *output[0], *output[1], *output[2])
+    fmt.Println("Address: ", output[0], output[1], output[2])
+}
+
+```
+
+It will produces the following output:
+```
+Value:  3 3 3
+Address:  0xc00010c000 0xc00010c000 0xc00010c000
+```
+
+To avoid such problem, we can access directly the item in the iterable instead of using the iterator variable.
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    var output []*int
+    nums := []int{1, 2, 3}
+
+    for i := range nums {
+        output = append(output, &nums[i])
+    }
+
+    fmt.Println("Value: ", *output[0], *output[1], *output[2])
+    fmt.Println("Address: ", output[0], output[1], output[2])
+}
+```
+
+Output:
+
+```
+Value:  1 2 3
+Address:  0xc00013a000 0xc00013a008 0xc00013a010
+```
+
+[Gosec](https://github.com/securego/gosec) can detect this problem automatically for you. If you scan the code in the first example with gosec, you'll get the following output:
+```text
+[/home/user/project/implicit-memory-aliasing/main.go:10] - G601 (CWE-118): Implicit memory aliasing in for loop. (Confidence: MEDIUM, Severity: MEDIUM)
+    9:  for _, num := range nums {
+  > 10:                 output = append(output, &num)
+    11:         }
+```
+

@@ -85,19 +85,12 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: 'gatsby-plugin-web-font-loader',
       options: {
-        fonts: [
-          {
-            family: `Open Sans`,
-            variants: [`400`, `700`]
-          },
-          {
-            family: `Fira Code`,
-            variants: [`400`]
-          },
-        ],
-      },
+        google: {
+          families: ['Open Sans:400,700', 'Fira Code:400']
+        }
+      }
     }
   ],
 }
