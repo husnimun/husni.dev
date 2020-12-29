@@ -5,7 +5,7 @@ description: "Beware of implicit memory aliasing in Go for loop"
 ---
 
 A for loop in Go will only use one iterator variable whose value gets updated in each loop operation.
-Since it's just a single variable, its address is constant and doesn't change.
+Since it's just a single variable, its address is constant and doesn't change and It might lead to unintended behaviour if not used carefully.
 
 Consider the following example.
 ```go
