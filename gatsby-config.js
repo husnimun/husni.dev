@@ -77,7 +77,7 @@ module.exports = {
         trackingId: `UA-174226458-1`,
       },
     },
-    `gatsby-plugin-feed`,
+    // `gatsby-plugin-feed`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
     {

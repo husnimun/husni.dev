@@ -16,7 +16,7 @@ const Layout = ({ location, title, children }) => {
       </header>
       <main className={styles.Main}>{children}</main>
       <footer className={styles.Footer}>
-        © {new Date().getFullYear()} Husni Munaya. <Link to="/rss.xml">Subscribe (RSS)</Link>.
+        © {new Date().getFullYear()} Husni Munaya.
       </footer>
     </div>
   )
