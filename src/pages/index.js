@@ -7,21 +7,21 @@ import { format } from "date-fns"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
-  const posts = data.allMarkdownRemark.edges
+  const posts = data.allMdx.edges
 
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
       {posts.map(({ node }) => {
-        const title = node.frontmatter.title || node.fields.slug
+        const title = node.frontmatter.title || node.slug
         return (
-          <article key={node.fields.slug}>
+          <article key={node.slug}>
             <header className={styles.BlogPost}>
               <div className={styles.BlogPostDate}>
                 {format(new Date(node.frontmatter.date), "yyyy MMM dd")}
               </div>
               <h3 className={styles.BlogPostTitle}>
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
+                <Link style={{ boxShadow: `none` }} to={node.slug}>
                   {title}
                 </Link>
               </h3>
@@ -42,16 +42,14 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(
+    allMdx(
       filter: { fileAbsolutePath: { regex: "/blog/" } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {
         node {
           excerpt
-          fields {
-            slug
-          }
+          slug
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title

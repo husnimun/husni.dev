@@ -8,16 +8,14 @@ exports.createPages = async ({ graphql, actions }) => {
   const blogsQuery = await graphql(
     `
       {
-        allMarkdownRemark(
+        allMdx(
           filter: { fileAbsolutePath: { regex: "/blog/" } }
           sort: { fields: [frontmatter___date], order: DESC }
           limit: 1000
         ) {
           edges {
             node {
-              fields {
-                slug
-              }
+              slug
               frontmatter {
                 title
               }
@@ -33,17 +31,17 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   // Create blog posts pages.
-  const posts = blogsQuery.data.allMarkdownRemark.edges
+  const posts = blogsQuery.data.allMdx.edges
 
   posts.forEach((post, index) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
     const next = index === 0 ? null : posts[index - 1].node
 
     createPage({
-      path: post.node.fields.slug,
+      path: post.node.slug,
       component: blogTemplate,
       context: {
-        slug: post.node.fields.slug,
+        slug: post.node.slug,
         previous,
         next,
       },
@@ -54,16 +52,14 @@ exports.createPages = async ({ graphql, actions }) => {
   const pagesQuery = await graphql(
     `
       {
-        allMarkdownRemark(
+        allMdx(
           filter: { fileAbsolutePath: { regex: "/page/" } }
           sort: { fields: [frontmatter___date], order: DESC }
           limit: 1000
         ) {
           edges {
-            node {
-              fields {
-                slug
-              }
+          node {
+              slug
               frontmatter {
                 title
               }
@@ -79,14 +75,14 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   // Create blog posts pages.
-  const pages = pagesQuery.data.allMarkdownRemark.edges
+  const pages = pagesQuery.data.allMdx.edges
 
   pages.forEach(post => {
     createPage({
-      path: post.node.fields.slug,
+      path: post.node.slug,
       component: pageTemplate,
       context: {
-        slug: post.node.fields.slug,
+        slug: post.node.slug,
       },
     })
   })
@@ -95,7 +91,7 @@ exports.createPages = async ({ graphql, actions }) => {
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
-  if (node.internal.type === `MarkdownRemark`) {
+  if (node.internal.type === `Mdx`) {
     const value = createFilePath({ node, getNode })
     createNodeField({
       name: `slug`,

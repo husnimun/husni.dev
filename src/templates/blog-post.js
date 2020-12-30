@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
 import { graphql } from "gatsby"
+import { MDXRenderer } from "gatsby-plugin-mdx"
 
 import "katex/dist/katex.min.css"
 
@@ -8,7 +9,7 @@ import SEO from "../components/seo"
 import styles from "./blog-post.module.scss"
 
 const BlogPostTemplate = ({ data, location }) => {
-  const post = data.markdownRemark
+  const post = data.mdx
   const siteTitle = data.site.siteMetadata.title
 
   useEffect(() => {
@@ -36,7 +37,7 @@ const BlogPostTemplate = ({ data, location }) => {
           <h1 className={styles.HeaderTitle}>{post.frontmatter.title}</h1>
           <p className={styles.HeaderDate}>{post.frontmatter.date}</p>
         </header>
-        <section dangerouslySetInnerHTML={{ __html: post.html }} />
+        <MDXRenderer>{post.body}</MDXRenderer>
         <footer></footer>
       </article>
       <hr className={styles.Separator}></hr>
@@ -54,10 +55,10 @@ export const pageQuery = graphql`
         title
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    mdx(slug: { eq: $slug }) {
       id
       excerpt(pruneLength: 160)
-      html
+      body
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")

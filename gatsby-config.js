@@ -34,9 +34,10 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: `gatsby-plugin-mdx`,
       options: {
-        plugins: [
+        extensions: [`.md`, `.mdx`],
+        gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,
             options: {
@@ -50,17 +51,11 @@ module.exports = {
             },
           },
           {
-            resolve: `gatsby-remark-katex`,
-            options: {
-              strict: `ignore`
-            }
-          },
-          {
             resolve: "gatsby-remark-external-links",
             options: {
               target: "_blank",
-              rel: "nofollow"
-            }
+              rel: "nofollow",
+            },
           },
           {
             resolve: `gatsby-remark-shiki`,
@@ -71,6 +66,7 @@ module.exports = {
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
         ],
+        remarkPlugins: [require("remark-math"), require("remark-html-katex")],
       },
     },
     `gatsby-transformer-sharp`,
@@ -85,12 +81,12 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
     {
-      resolve: 'gatsby-plugin-web-font-loader',
+      resolve: "gatsby-plugin-web-font-loader",
       options: {
         google: {
-          families: ['Open Sans:400,700', 'Fira Code:400']
-        }
-      }
-    }
+          families: ["Open Sans:400,700", "Fira Code:400"],
+        },
+      },
+    },
   ],
 }
