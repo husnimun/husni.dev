@@ -55,7 +55,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    mdx(slug: { eq: $slug }) {
+    mdx(fields: { slug: { eq: $slug } }) {
       id
       excerpt(pruneLength: 160)
       body

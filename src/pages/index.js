@@ -13,15 +13,15 @@ const BlogIndex = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
       {posts.map(({ node }) => {
-        const title = node.frontmatter.title || node.slug
+        const title = node.frontmatter.title || node.fields.slug
         return (
-          <article key={node.slug}>
+          <article key={node.fields.slug}>
             <header className={styles.BlogPost}>
               <div className={styles.BlogPostDate}>
                 {format(new Date(node.frontmatter.date), "yyyy MMM dd")}
               </div>
               <h3 className={styles.BlogPostTitle}>
-                <Link style={{ boxShadow: `none` }} to={node.slug}>
+                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
                   {title}
                 </Link>
               </h3>
@@ -49,7 +49,9 @@ export const pageQuery = graphql`
       edges {
         node {
           excerpt
-          slug
+          fields {
+            slug
+          }
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title
