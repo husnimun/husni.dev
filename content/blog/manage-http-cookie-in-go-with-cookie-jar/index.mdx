@@ -1,0 +1,107 @@
+---
+title: Manage HTTP Cookie in Go with Cookie Jar
+date: "2021-02-06"
+description: "Manage HTTP Cookie in Go with Cookie Jar"
+---
+
+Go HTTP library provides an interface to manage the storage of cookies in HTTP requests.
+If we provide a jar to `http.Client`, the jar is used to insert relevant cookies into every request.
+The jar is also updated with the cookie values of every response.
+If the jar is nil, cookies are sent only when they are explicitly set on the request.
+
+Consider this example. Even though the server sets a cookie header on the response, the HTTP client will simply ignore it because the cookie jar is not set.
+
+```go
+package main
+
+import (
+	"fmt"
+	"net/http"
+	"net/http/httptest"
+)
+
+func main() {
+	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if cookie, err := r.Cookie("Cookie"); err != nil {
+			fmt.Println("You don't have a cookie. Here's one for you. Don't forget to keep it.")
+			http.SetCookie(w, &http.Cookie{Name: "Cookie", Value: "Peanut Butter"})
+		} else {
+			fmt.Printf("You have %s cookie!\n", cookie.Value)
+		}
+	}))
+	defer ts.Close()
+
+	client := &http.Client{}
+
+	if _, err := client.Get(ts.URL); err != nil {
+		panic(err)
+	}
+
+	if _, err := client.Get(ts.URL); err != nil {
+		panic(err)
+	}
+}
+
+```
+
+Output:
+
+```
+You don't have a cookie. Here's one for you. Don't forget to keep it.
+You don't have a cookie. Here's one for you. Don't forget to keep it.
+```
+
+The `net/http/cookiejar` package provides in-memory CookieJar implementation.
+We can use that as the jar on the `http.Client`.
+
+```go
+package main
+
+import (
+	"fmt"
+	"net/http"
+	"net/http/cookiejar"
+	"net/http/httptest"
+
+	"golang.org/x/net/publicsuffix"
+)
+
+func main() {
+	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if cookie, err := r.Cookie("Cookie"); err != nil {
+			fmt.Println("You don't have a cookie. Here's one for you. Don't forget to keep it.")
+			http.SetCookie(w, &http.Cookie{Name: "Cookie", Value: "Peanut Butter"})
+		} else {
+			fmt.Printf("You have %s cookie!\n", cookie.Value)
+		}
+	}))
+	defer ts.Close()
+
+	jar, err := cookiejar.New(&cookiejar.Options{PublicSuffixList: publicsuffix.List})
+	if err != nil {
+		panic(err)
+	}
+
+	client := &http.Client{
+		Jar: jar,
+	}
+
+	if _, err = client.Get(ts.URL); err != nil {
+		panic(err)
+	}
+
+	if _, err = client.Get(ts.URL); err != nil {
+		panic(err)
+	}
+}
+```
+
+Now, the code produces the following output:
+
+```
+You don't have a cookie. Here's one for you. Don't forget to keep it.
+You have Peanut Butter cookie!
+```
+
+Because the `net/http/cookiejar` package stores cookies in memory, the cookies will be destroyed once the program exits.
+If you want to persist the cookies, you can build your own cookie jar by implementing the `http.CookieJar` interface.
