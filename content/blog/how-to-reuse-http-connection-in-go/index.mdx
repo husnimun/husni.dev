@@ -83,3 +83,5 @@ That means the program successfully reuses the same TCP connection.
 You should fully read the response body before you close it to ensure that the TCP connection is reused.
 By reusing the same TCP connection, we can avoid the overhead in establishing a new TCP connection, thus providing a significant performance to a program that makes a lot of HTTP requests.
 If you don't really need the request body, you can limit the reading with `io.CopyN` in case the the other end of a connection sends you unwanted large streams of data.
+
+If you're unsure, you can [check if Go is reusing the connection](https://gophercoding.com/has-client-reused-connection/) using a ClientTrace.
