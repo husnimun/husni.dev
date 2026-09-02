@@ -1,5 +1,6 @@
 ---
 title: Feeling Overwhelmed
+slug: feeling-overwhelmed
 date: "2022-04-15"
 description: "Feeling Overwhelmed"
 ---

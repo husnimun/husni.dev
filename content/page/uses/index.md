@@ -1,5 +1,6 @@
 ---
 title: Uses
+url: "/uses/"
 date: "2020-08-01"
 description: "What I use"
 ---

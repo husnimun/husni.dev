@@ -1,5 +1,6 @@
 ---
 title: Amdahl's Law
+slug: amdahl-law
 date: "2020-08-01"
 description: "Amdahl's law"
 ---

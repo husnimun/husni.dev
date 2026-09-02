@@ -1,5 +1,6 @@
 ---
 title: Obtain Exponent and Modulus from RSA key in PEM Format
+slug: obtain-rsa-exponent-and-modulus
 date: "2020-08-09"
 description: Obtain Exponent and Modulus from RSA key in PEM format with Python
 ---

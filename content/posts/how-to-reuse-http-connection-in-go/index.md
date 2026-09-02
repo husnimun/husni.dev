@@ -1,5 +1,6 @@
 ---
 title: How to Reuse HTTP Connection in Go
+slug: how-to-reuse-http-connection-in-go
 date: "2021-04-07"
 description: "Reuse HTTP Connection in Go"
 ---

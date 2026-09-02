@@ -1,5 +1,6 @@
 ---
 title: "Beware of Implicit Memory Aliasing in Go For Loop"
+slug: beware-of-implicit-memory-aliasing-in-go-foor-loop
 date: "2020-12-19"
 description: "Beware of implicit memory aliasing in Go for loop"
 ---

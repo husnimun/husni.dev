@@ -1,5 +1,6 @@
 ---
 title: Manage HTTP Cookie in Go with Cookie Jar
+slug: manage-http-cookie-in-go-with-cookie-jar
 date: "2021-02-06"
 description: "Manage HTTP Cookie in Go with Cookie Jar"
 ---

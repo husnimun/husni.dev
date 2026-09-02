@@ -1,5 +1,6 @@
 ---
 title: How to Sign Your Git Commit
+slug: how-to-sign-your-git-commit
 date: "2020-06-15"
 description: "How to sign your git commit"
 ---
