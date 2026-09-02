@@ -1,0 +1,30 @@
+@import "colors";
+
+.post-header {
+    margin-bottom: 24px;
+}
+
+.post-title {
+    margin-bottom: 0;
+
+    a {
+        border-bottom: none;
+    }
+}
+
+.post-date {
+    color: $grey-1;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.post-separator {
+    border: none;
+    border-bottom: 1px solid $grey-1;
+    margin-top: 52px;
+    margin-bottom: 24px;
+}
+
+.post-comments {
+    margin-bottom: 24px;
+}
