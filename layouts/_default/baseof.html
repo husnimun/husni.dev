@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode | default \"en-us\" }}">
+<html lang="{{ .Site.Language.Locale | default "en-us" }}">
 <head>
   {{ partial "head.html" . }}
 </head>
@@ -11,6 +11,7 @@
     </main>
     {{ partial "footer.html" . }}
   </div>
+  {{ partial "math.html" . }}
   {{ partial "analytics.html" . }}
 </body>
 </html>

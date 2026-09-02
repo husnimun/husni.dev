@@ -1,6 +1,7 @@
 baseURL = 'https://husni.dev'
-languageCode = 'en-us'
+locale = 'en-us'
 title = 'Husni Munaya'
+disableKinds = ['taxonomy', 'term', 'section']
 
 [params]
   description = 'Personal blog of Husni Munaya'
