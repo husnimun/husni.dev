@@ -1,0 +1,14 @@
+{{ define "main" }}
+  {{ range (.Site.RegularPages.ByDate.Reverse) }}
+    {{ if eq .Section "posts" }}
+      <article>
+        <header class="blog-post">
+          <div class="blog-post__date">{{ .Date.Format "2006 Jan 02" }}</div>
+          <h2 class="blog-post__title">
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          </h2>
+        </header>
+      </article>
+    {{ end }}
+  {{ end }}
+{{ end }}

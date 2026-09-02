@@ -1,0 +1,34 @@
+baseURL = 'https://husni.dev'
+locale = 'en-us'
+title = 'Husni Munaya'
+disableKinds = ['taxonomy', 'term', 'section']
+
+[params]
+  description = 'Personal blog of Husni Munaya'
+  author = 'Husni Munaya'
+  twitter = 'husnimun'
+  goatcounter = 'https://husni.goatcounter.com/count'
+  googleAnalytics = 'UA-174226458-1'
+
+[permalinks]
+  posts = '/:slug/'
+
+[outputFormats]
+  [outputFormats.RSS]
+    mediaType = 'application/rss+xml'
+    baseName = 'rss'
+
+[outputs]
+  home = ['HTML', 'RSS']
+  page = ['HTML']
+  section = ['HTML']
+
+[markup]
+  [markup.highlight]
+    style = 'dracula'
+    lineNos = false
+    noClasses = false
+    tabWidth = 4
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

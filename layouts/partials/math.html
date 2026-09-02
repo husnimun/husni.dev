@@ -1,0 +1,21 @@
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll("p").forEach(function (p) {
+    var html = p.innerHTML.trim();
+    if (/^\$\$[\s\S]*\$\$$/.test(html)) {
+      var div = document.createElement("div");
+      div.innerHTML = html;
+      p.replaceWith(div);
+    }
+  });
+
+  if (typeof renderMathInElement !== "undefined") {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+      ],
+    });
+  }
+});
+</script>

@@ -1,0 +1,33 @@
+@import "colors";
+
+.blog-post {
+    display: grid;
+    margin-bottom: 16px;
+
+    @media screen and (min-width: 720px) {
+        grid-template-columns: 140px 1fr;
+    }
+}
+
+.blog-post__title {
+    margin-bottom: 0;
+
+    a {
+        border-bottom: none;
+    }
+}
+
+.blog-post__date {
+    color: $grey-1;
+    font-weight: 400;
+}
+
+
+.blog-post__title,
+.blog-post__date {
+    font-size: 1rem;
+
+    @media screen and (min-width: 720px) {
+        font-size: 1.4rem;
+    }
+}
