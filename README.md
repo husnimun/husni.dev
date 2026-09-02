@@ -2,6 +2,10 @@
 
 Personal blog of Husni Munaya, now built with [Hugo](https://gohugo.io/).
 
+## Requirements
+
+- [Hugo Extended](https://gohugo.io/installation/) (latest version recommended)
+
 ## Local development
 
 ```bash
