@@ -2,7 +2,7 @@ stages: [build, release]
 
 build:
   stage: build
-  image: registry.gitlab.com/pages/hugo/hugo_extended:latest
+  image: hugomods/hugo:0.165.0
   script:
     - hugo --minify
   artifacts:
