@@ -35,4 +35,3 @@ The generated site is written to `public/`.
 The site is configured to build to `public/`. Deploy the contents of that directory to your static host (e.g., GitHub Pages, Netlify, Vercel).
 
 A common approach for `husnimun.github.io` is a GitHub Actions workflow that runs `hugo --minify` and pushes `public/` to the `gh-pages` branch.
-
