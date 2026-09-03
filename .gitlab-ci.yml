@@ -1,0 +1,18 @@
+stages: [build, release]
+
+build:
+  stage: build
+  image: registry.gitlab.com/pages/hugo/hugo_extended:latest
+  script:
+    - hugo --minify
+  artifacts:
+    paths:
+      - public
+
+release:
+  stage: release
+  image: docker:27
+  script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker build -t $CI_REGISTRY/$CI_PROJECT_PATH:$CI_COMMIT_SHORT_SHA .
+    - docker push $CI_REGISTRY/$CI_PROJECT_PATH:$CI_COMMIT_SHORT_SHA
