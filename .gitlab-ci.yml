@@ -17,7 +17,7 @@ sync:
         echo "Already up to date with GitHub"
         exit 0
       fi
-    - git push "https://oauth2:$GITLAB_PUSH_TOKEN@gitlab:8080/$CI_PROJECT_PATH.git" FETCH_HEAD:master
+    - git push "http://oauth2:$GITLAB_PUSH_TOKEN@gitlab:8080/$CI_PROJECT_PATH.git" FETCH_HEAD:master
 
 build:
   stage: build
