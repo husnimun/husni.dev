@@ -8,11 +8,7 @@ sync:
   rules:
     - if: $CI_PIPELINE_SOURCE == "schedule"
   before_script:
-    - apk add --no-cache git openssh-client
-    - mkdir -p ~/.ssh
-    - eval $(ssh-agent -s)
-    - echo "$SSH_DEPLOY_KEY" | tr -d '\r' | ssh-add -
-    - ssh-keyscan -H "ssh.husni.dev" >> ~/.ssh/known_hosts
+    - apk add --no-cache git
   script:
     - git remote add github https://github.com/husnimun/husni.dev.git
     - git fetch github master
@@ -21,7 +17,7 @@ sync:
         echo "Already up to date with GitHub"
         exit 0
       fi
-    - git push git@ssh.husni.dev:husni.munaya/husni.dev.git FETCH_HEAD:master
+    - git push "https://oauth2:$GITLAB_PUSH_TOKEN@$CI_SERVER_HOST/$CI_PROJECT_PATH.git" FETCH_HEAD:master
 
 build:
   stage: build
