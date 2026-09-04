@@ -37,8 +37,8 @@ release:
   image: docker:27
   script:
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
-    - docker build -t $CI_REGISTRY/$CI_PROJECT_PATH:$CI_COMMIT_SHORT_SHA .
-    - docker push $CI_REGISTRY/$CI_PROJECT_PATH:$CI_COMMIT_SHORT_SHA
+    - docker build -t $CI_REGISTRY/$CI_PROJECT_PATH:latest .
+    - docker push $CI_REGISTRY/$CI_PROJECT_PATH:latest
   rules:
     - if: $CI_PIPELINE_SOURCE == "schedule"
       when: never
